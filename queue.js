@@ -4,8 +4,8 @@
  * The queue module provides a simple interface for a queue.
  *
  * newQueue 
- * Accepts an array and returns initializes the queue with that array.
- * Returns an interface to enqueue, dequeue, print, and poll for length.
+ * Accepts an array and returns the queue initialized with that array.
+ * Returns an interface to enqueue, dequeue, and length.
  * Enqueue should be O(1) for most JS engines
  * Dequeue is O(1)
  *
