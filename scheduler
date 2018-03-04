@@ -3,7 +3,7 @@
 # If no arg is specified, display help message
 if [ -z "$1" ]
   then
-    echo "Usage: ./scheduler <file.json>"
+    echo "Error: No argument provided"
     exit 1
 fi
 

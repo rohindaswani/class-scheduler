@@ -10,14 +10,14 @@
  */
 
 module.exports = {
-	"getDAG": (arr) => {
+	getDAG: (arr = []) => {
     let dag = {};
     arr.forEach((obj) => {
       if (!dag.hasOwnProperty(obj.name)) {
         dag[obj.name] = {
-          "name": obj.name,
-          "next": [],
-          "inDegree": obj.prerequisites.length
+          name: obj.name,
+          next: [],
+          inDegree: obj.prerequisites.length
         };
       } else {
         dag[obj.name].inDegree = obj.prerequisites.length;
@@ -25,11 +25,15 @@ module.exports = {
       for (let i = 0; i < obj.prerequisites.length; i++) {
         if (!dag.hasOwnProperty(obj.prerequisites[i])) {
           dag[obj.prerequisites[i]] = {
-            "name": obj.prerequisites[i],
-            "next": [obj.name]
+            name: obj.prerequisites[i],
+            next: [obj.name]
           };
         } else {
-          dag[obj.prerequisites[i]].next.push(obj.name);
+          if (dag[obj.name].next.indexOf(obj.prerequisites[i]) < 0) {
+            dag[obj.prerequisites[i]].next.push(obj.name);
+          } else {
+            throw new Error("Error: A cycle is present");
+          }
         }
       }
     });

@@ -12,7 +12,7 @@
  */
 
 module.exports = {
-  newQueue: (arr) => {
+  newQueue: (arr = []) => {
     let q = arr;
     let begin = 0;
     return {
@@ -21,10 +21,11 @@ module.exports = {
         return true;
       },
       dequeue: () => {
-        return q[begin++];
-      },
-      print: () => {
-        console.log(q);
+        if (begin < q.length) {
+          return q[begin++];
+        } else {
+          throw new Error('queue is empty');
+        }
       },
       length: () => {
         return q.length - begin;

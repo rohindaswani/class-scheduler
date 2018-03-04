@@ -26,7 +26,7 @@ function getZeroList(graph) {
 }
 
 module.exports = {
-  "getSortedArray": (graph) => {
+  getSortedArray: (graph) => {
     let sortedArr = [];
     let visited = 0;
     let q = queue.newQueue(getZeroList(graph));
@@ -43,9 +43,8 @@ module.exports = {
       });
     }
     if (visited !== Object.keys(graph).length) {
-      console.log('Topological sort is not possible.');
-      return null;
+      throw new Error("Topological sort is not possible");
     }
     return sortedArr;
   }
-}
+};

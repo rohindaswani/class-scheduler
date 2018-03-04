@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Algebra 1",
+        "prerequisites": ["Arithmetic"]
+    },
+    {
+        "name": "Geometry",
+        "prerequisites": []
+    },
+    {
+        "name": "Arithmetic",
+        "prerequisites": ["Algebra 1"]
+    },
+    {
+        "name": "Algebra 2",
+        "prerequisites": ["Algebra 1", "Geometry"]
+    },
+    {
+        "name": "Pre Calculus",
+        "prerequisites": ["Algebra 2"]
+    },
+    {
+        "name": "Algebra 0",
+        "prerequisites": []
+    },
+    {
+        "name": "Calculus 1",
+        "prerequisites": ["Pre Calculus", "Algebra 2", "Algebra 1", "Geometry", "Arithmetic"]
+    }
+]
