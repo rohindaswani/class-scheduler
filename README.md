@@ -46,10 +46,10 @@ The output of the `scheduler` will be the order in which classes should be taken
 
 The tests for the project are defined under the directory `./tests`. To run the tests you will need `yarn`. 
 
-Invoke the executable `./test_runner` to run the test suite. `./test_runner` wil install the required dependencies and will run the tests.
+Invoke the executable `./test_runner` to run the test suite. `./test_runner` will install the required dependencies and run the tests.
 
 ###Designing the Algorithm
-Since the problem had to do with scheduling, `topological sort` was most efficient and obvious algorithm that would give the desired results with a time complexity of `O(V + E)` with `V` being the number of classes and `E` being the total number of prerequisites.
+Since the problem had to do with scheduling, `topological sort` was the most efficient and obvious algorithm that would give the desired results with a time complexity of `O(V + E)` with `V` being the number of classes and `E` being the total number of prerequisites.
 
 Take a look at `index.js` before reading further. 
 
