@@ -1,5 +1,5 @@
 let test = require('unit.js');
-let arrayToDAG = require('../arrayToDAG');
+let arrayToDAG = require('../src/arrayToDAG');
 
 describe('ArrayToDAG', () => {
   describe('With a valid input', () => {
@@ -15,7 +15,6 @@ describe('ArrayToDAG', () => {
     });
 
     describe('With a non-empty array', () => {
-
       it('returns a DAG with a one element array', () => {
         let classArr = [
           {
@@ -23,7 +22,13 @@ describe('ArrayToDAG', () => {
             prerequisites: []
           }
         ];
-        test.object(arrayToDAG.getDAG(classArr)).is({"Economics 101": {name: "Economics 101", next: [], inDegree: 0}});
+        test.object(arrayToDAG.getDAG(classArr)).is({
+          "Economics 101": {
+            name: "Economics 101",
+            next: [],
+            inDegree: 0
+          }
+        });
       });
 
       it('returns a DAG with a one element array and edge', () => {
@@ -71,7 +76,7 @@ describe('ArrayToDAG', () => {
         });
       });
 
-      it('returns a DAG with a three element array which are not unique', () => {
+      it('returns a DAG with a three element array with non-unique elements', () => {
         let classArr = [
           {
             name: 'Economics 101',
@@ -137,6 +142,32 @@ describe('ArrayToDAG', () => {
   });
 
   describe('With an invalid input', () => {
+    it('Throws an error when the name key is not present', () => {
+      let classArr = [
+        {
+          name: 'Economics 101',
+          prerequisites: []
+        },
+        {
+          prerequisites: []
+        }
+      ];
+      test.error(() => arrayToDAG.getDAG(classArr)).is(new Error("'name' key is missing"));
+    });
+
+    it('Throws an error when the prerequisites key is not present', () => {
+      let classArr = [
+        {
+          name: 'Economics 101',
+          prerequisites: []
+        },
+        {
+          name: 'Economics 102',
+        }
+      ];
+      test.error(() => arrayToDAG.getDAG(classArr)).is(new Error("'prerequisites' key is missing"));
+    });
+
     it('Throws an error when the graph is cyclical', () => {
       let classArr = [
         {
@@ -145,14 +176,22 @@ describe('ArrayToDAG', () => {
         },
         {
           name: 'Economics 102',
-          prerequisites: ['201']
+          prerequisites: ['Economics 101']
         },
         {
           name: 'Economics 201',
-          prerequisites: ['Economics 102']
+          prerequisites: ['Economics 101', 'Economics 102']
+        },
+        {
+          name: 'Economics 202',
+          prerequisites: ['Economics 201', 'Economics 340']
+        },
+        {
+          name: 'Economics 340',
+          prerequisites: ['Economics 202']
         }
       ];
-      test.error(arrayToDAG.getDAG(classArr));
+      test.error(() => arrayToDAG.getDAG(classArr)).is(new Error("A cycle is present"));
     })
   });
 });

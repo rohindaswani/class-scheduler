@@ -1,5 +1,5 @@
 let test = require('unit.js');
-let queue = require('../queue');
+let queue = require('../src/queue');
 
 describe('queue', () => {
 
@@ -27,7 +27,7 @@ describe('queue', () => {
     test.value(q.dequeue()).is(4);
   });
 
-  it('throws error when dequeing an empty queue', () => {
+  it('throws error when dequeuing an empty queue', () => {
     test.error(() => q.dequeue()).is(new Error('queue is empty'));
   })
 });
