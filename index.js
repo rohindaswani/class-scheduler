@@ -1,6 +1,6 @@
 let classArr = require('./tmp/class.json');
-let arrayToDAG = require('./arrayToDAG');
-let topologicalSort = require('./topologicalSort');
+let arrayToDAG = require('./src/arrayToDAG');
+let topologicalSort = require('./src/topologicalSort');
 
 let arr = topologicalSort.getSortedArray(arrayToDAG.getDAG(classArr));
 
