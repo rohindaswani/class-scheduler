@@ -20,17 +20,19 @@ module.exports = {
           inDegree: obj.prerequisites.length
         };
       } else {
+        //If a class is present more than once, set inDegree to the last prerequisites array
         dag[obj.name].inDegree = obj.prerequisites.length;
       }
-      for (let i = 0; i < obj.prerequisites.length; i++) {
-        if (!dag.hasOwnProperty(obj.prerequisites[i])) {
-          dag[obj.prerequisites[i]] = {
-            name: obj.prerequisites[i],
+      for (let prerequisite of obj.prerequisites) {
+        if (!dag.hasOwnProperty(prerequisite)) {
+          dag[prerequisite] = {
+            name: prerequisite,
             next: [obj.name]
           };
         } else {
-          if (dag[obj.name].next.indexOf(obj.prerequisites[i]) < 0) {
-            dag[obj.prerequisites[i]].next.push(obj.name);
+          //Check it is not a cycle
+          if (dag[obj.name].next.indexOf(prerequisite) < 0) {
+            dag[prerequisite].next.push(obj.name);
           } else {
             throw new Error("Error: A cycle is present");
           }

@@ -9,7 +9,7 @@
     },
     {
         "name": "Arithmetic",
-        "prerequisites": ["Algebra 1"]
+        "prerequisites": []
     },
     {
         "name": "Algebra 2",

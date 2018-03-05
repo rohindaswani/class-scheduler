@@ -14,10 +14,10 @@
 module.exports = {
   newQueue: (arr = []) => {
     let q = arr;
-    let begin = 0;
+    let begin = 0; //used to optimize
     return {
       enqueue: (e) => {
-        q.push(e);
+        q.push(e);      //amortized O(1)
         return true;
       },
       dequeue: () => {
