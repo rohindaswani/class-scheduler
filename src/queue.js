@@ -14,7 +14,7 @@
 module.exports = {
   newQueue: (arr = []) => {
     let q = arr;
-    let begin = 0; //used to optimize
+    let begin = 0;    //used for optimization
     return {
       enqueue: (e) => {
         q.push(e);      //amortized O(1)

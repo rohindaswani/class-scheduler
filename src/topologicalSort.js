@@ -6,9 +6,9 @@
  * getSortedArray 
  * Accepts an object which represents a DAG.
  *     The object must have a key for each node of the DAG. 
- *     The value should be an object that has the in degree of the node 
+ *     The value should be an object that has the name, in degree of the node
  *     and an list of next nodes.
- *     {"inDegree": 1, "next": []}
+ *     eg. {name: "Arithmetic", inDegree: 1, next: []}
  * Returns an array of topologically sorted names of the DAG.
  *
  */
