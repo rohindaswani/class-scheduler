@@ -1,8 +1,5 @@
 #!/bin/bash
 
 #install package dependencies for test suite
-yarn install --save-docs unit.js
-yarn install --save-docs mocha
 yarn
-
-mocha
+yarn test
