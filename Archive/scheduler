@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# If no arg is specified, display help message
+if [ -z "$1" ]
+  then
+    echo "Error: No argument provided"
+    exit 1
+fi
+
+# Copy the json to ./tmp/class.json
+mkdir tmp
+cp $1 ./tmp/class.json
+
+# Run the code
+node index.js
+
+# Delete tmp directory
+rm -rf tmp

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#install package dependencies for test suite
+yarn
+yarn test
